@@ -11,12 +11,8 @@ use Framework\TemplateEngine;
 
 class AboutController
 {
-    public TemplateEngine $view;
-
-
-    public function __construct()
+    public function __construct(public TemplateEngine $view)
     {
-        $this->view = new TemplateEngine(Paths::VIEW);
     }
 
     public function about()
