@@ -94,7 +94,7 @@ class TransactionService
     {
         $params = [
             'user_id' => $_SESSION['user'],
-            'id' => $id,
+            'id' => $id
         ];
         $this->db->query(
             "DELETE FROM transactions 
