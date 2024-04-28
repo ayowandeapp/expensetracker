@@ -6,10 +6,16 @@ include __DIR__ . '/src/Framework/Database.php';
 
 
 $db = new Database('mysql', [
-    'host' => 'localhost',
+    'host' => 'db',
     'port' => 3306,
     'dbname' => 'phptest'
-], 'root', '');
+], 'root', 'root');
+
+// $db = new Database('mysql', [
+//     'host' => env('DB_HOST', '127.0.0.1'),
+//     'port' => env('DB_PORT', '3306'),
+//     'dbname' => env('DB_NAME', 'phptest'),
+// ], env('DB_USER', 'root'), env('DB_PASS', 'root'));
 
 
 $sqlFile = file_get_contents("./database.sql");

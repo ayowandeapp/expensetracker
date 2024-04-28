@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    build: ./docker
+    image: ayowandeapp/php_mvc
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/httpd.conf:/etc/apache2/conf-enabled/httpd.conf
+  db:
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: phptest
+
+volumes:
+  mysql-data:
