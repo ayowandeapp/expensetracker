@@ -22,3 +22,9 @@ function redirectTo(string $path)
     http_response_code(302);
     exit;
 }
+
+function env($key, $default = null)
+{
+    $value = getenv($key);
+    return $value !== false ? $value : $default;
+}
