@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t ayowandeapp/expensetracker -f ./docker/Dockerfile ./docker
+script:
+  - docker run -e CI=true ayowandeapp/expensetracker ./vendor/bin/phpunit tests
