@@ -24,18 +24,26 @@ class HomeController
 
     public function home()
     {
-        $APIKEY = 'AIzaSyArNbyN70FXEcAgObXPY3lkQKcse4QVD0A';
-        $end_date = date('Y-m-d', strtotime('+1 year'));
-        $holiday = new Holidays();
-        $holidays = $holiday->withApiKey($APIKEY)
-            ->to($end_date)
-            ->inCountry('NG')
-            ->withMinimalOutput()
-            ->list();
+        try {
+            $APIKEY = 'AIzaSyArNbyN70FXEcAgObXPY3lkQKcse4QVD0A';
+            $end_date = date('Y-m-d', strtotime('+1 year'));
+            $holiday = new Holidays();
+            $holidays = $holiday->withApiKey($APIKEY)
+                ->to($end_date)
+                ->inCountry('NG')
+                ->withMinimalOutput()
+                ->list();
 
-        echo $this->view->render('user/dashboard.php', [
-            'holidays' => $holidays
-        ]);
+            echo $this->view->render('user/dashboard.php', [
+                'holidays' => $holidays
+            ]);
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+            echo $this->view->render('user/dashboard.php', [
+                'holidays' => []
+            ]);
+            //throw $th;
+        }
         // [$transactions, $count] = $this->transactionService->getUserTransactions(
         //     $length,
         //     $offset
