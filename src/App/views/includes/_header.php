@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/main.css" />
 </head>
 
@@ -16,7 +19,7 @@
     <!-- Start Header -->
     <header class="bg-indigo-900">
         <nav class="mx-auto flex container items-center justify-between py-4" aria-label="Global">
-            <a href="/" class="-m-1.5 p-1.5 text-white text-2xl font-bold">PHPiggy</a>
+            <a href="/" class="-m-1.5 p-1.5 text-white text-2xl font-bold">User Management System</a>
             <!-- Navigation Links -->
             <div class="flex lg:gap-x-10">
 
@@ -32,7 +35,9 @@
                     <a href="/login" class="text-gray-300 hover:text-white transition">Login</a>
                     <a href="/register" class="text-gray-300 hover:text-white transition">Register</a>
                 <?php endif; ?>
-                <a href="/about" class="text-gray-300 hover:text-white transition">About</a>
+                <!-- <a href="/about" class="text-gray-300 hover:text-white transition">About</a> -->
+                <!-- <a href="/profile" class="text-gray-300 hover:text-white transition">Edit Profile</a> -->
+                <a href="/view_profile" class="text-gray-300 hover:text-white transition">Profile</a>
 
             </div>
         </nav>

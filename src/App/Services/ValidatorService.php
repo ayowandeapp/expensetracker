@@ -26,6 +26,7 @@ class ValidatorService
     {
         $this->validator->validate($formData, [
             'email' => ['required', 'email'],
+            'username' => ['required'],
             'age' => ['required'],
             'country' => ['required'],
             'social' => ['required'],
@@ -51,6 +52,14 @@ class ValidatorService
             'description' => ['required'],
             'amount' => ['required'],
             'date' => ['required'],
+
+        ]);
+    }
+
+    public function validateProfile(array $formData)
+    {
+        $this->validator->validate($formData, [
+            'username' => ['required'],
 
         ]);
     }
