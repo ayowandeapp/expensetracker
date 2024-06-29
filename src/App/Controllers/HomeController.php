@@ -25,7 +25,7 @@ class HomeController
     public function home()
     {
         try {
-            $APIKEY = 'AIzaSyArNbyN70FXEcAgObXPY3lkQKcse4QVD0A';
+            $APIKEY = 'AIzaSycse4QVD0A'; // your key
             $end_date = date('Y-m-d', strtotime('+1 year'));
             $holiday = new Holidays();
             $holidays = $holiday->withApiKey($APIKEY)
