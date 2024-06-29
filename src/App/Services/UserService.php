@@ -33,10 +33,11 @@ class UserService
     {
         $pass = password_hash($formData['password'], PASSWORD_BCRYPT, ['cost' => 13]);
         $this->db->query(
-            "INSERT INTO users(email, password, age, country, social_media_url) 
-            VALUES (:email, :password, :age, :country, :url)",
+            "INSERT INTO users(email, username, password, age, country, social_media_url) 
+            VALUES (:email, :username, :password, :age, :country, :url)",
             [
                 'email' => $formData['email'],
+                'username' => $formData['username'],
                 'password' => $pass,
                 'age' => $formData['age'],
                 'country' => $formData['country'],
@@ -78,5 +79,40 @@ class UserService
         unset($_SESSION['user']);
 
         session_regenerate_id();
+    }
+
+
+
+    public function getUserDetails()
+    {
+        $params = [
+            'user_id' => $_SESSION['user'],
+        ];
+
+        $userDetails = $this->db->query(
+            "SELECT id, username, email FROM users WHERE id = :user_id
+        ",
+            $params
+        )->find();
+
+        return $userDetails;
+    }
+
+    public function updateProfile(array $formData)
+    {
+
+        $params = [
+            'user_id' => $_SESSION['user'],
+            'username' => $formData['username']
+        ];
+        $this->db->query(
+            "UPDATE users 
+                SET username = :username
+                WHERE id = :user_id
+                ",
+            $params
+        );
+
+        $_SESSION['success'] = 'Profile updated Successfully!';
     }
 }
